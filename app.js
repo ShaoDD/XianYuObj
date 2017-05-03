@@ -12,19 +12,19 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug')('dmp-webapp');
 var fs = require('fs');
-var routes = require('./routes/router');
+var routes = require('./dist/routes/router');
 var filter = require('./filter');
 
 var app = express();
 //端口号
 app.set('port', process.env.PORT || 9001);
 //设置视图路径
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './dist/views'));
 // 设置试图引擎
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //视图片段
 app.use(partials());
 //日志记录器
@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //解析和存储cookie
 app.use(cookieParser());
 //静态文件支持
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './dist/public')));
 
 //拦截器
 app.use(filter.filterFun);

@@ -4,7 +4,7 @@
 var sysConfig       =require('./config');
 var utils           =require('./utils');
 var async           =require('async');
-var Action          =require('./routes/apiaction');
+var Action          =require('./dist/routes/apiaction');
 var https           =require('https');
 var expiredTime     = 900000000;
 var webdebug        = true;
@@ -16,7 +16,7 @@ exports.filterFun = function(req,res,next){
     console.log("**********Start**********");
     var url = req.originalUrl ;
     if(url === "/"){
-        res.redirect("/app/index");
+        return res.redirect("/app/index");
     }
     var boo = sysConfig.isWhiteList(url);
     if(boo){

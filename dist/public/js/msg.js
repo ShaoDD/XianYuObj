@@ -1,4 +1,4 @@
-﻿// 对话类项目模块
+// 对话类项目模块
 //
 
 var MsgItem = wzzh.dw.Model.extend({
