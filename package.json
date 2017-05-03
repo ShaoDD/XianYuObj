@@ -1,0 +1,45 @@
+{
+  "name": "MyWeb",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.4.1",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "mysql": "^2.11.1",
+    "serve-favicon": "~2.3.0",
+    "express-partials": "~0.3.0",
+    "crypto": "~0.0.3",
+    "ccap": "~0.4.3",
+    "socket.io": "~1.2.0",
+    "upyun": "~1.1.1",
+    "connect-busboy": "~0.0.2",
+    "xmlreader": "~0.2.3",
+    "async": "~0.9.0",
+    "request": "~2.51.0",
+    "wechat": "~1.2.1",
+    "wechat-api": "~1.1.2",
+    "jssha": "^1.5.0",
+    "jsonwebtoken": "~5.5.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-ejs": "^3.0.1",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11"
+  }
+}
