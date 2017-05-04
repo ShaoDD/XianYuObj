@@ -1,4 +1,3 @@
-/node_modules/*
-/src/*
-/.idea/*
-/study_pro/*
+/node_modules
+/.idea
+/study_pro

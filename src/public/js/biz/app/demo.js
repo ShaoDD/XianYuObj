@@ -1,0 +1,1 @@
+define(["jquery","fastClick","mobileLayer","IO"],function(e,n,i,c){e(document).ready(function(){})});
