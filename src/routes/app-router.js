@@ -1,12 +1,12 @@
 /**
  * Created by WinterKiSS on 2016/9/10.
  */
-var Action = require("../apiaction");
+var Action = require("./apiaction");
 var DataProxy = require("data-proxy");
 
 var mysql = require('mysql');
 //配置模块
-var sqloperate = require('../SQL_interface/SQL_operate');
+var sqloperate = require('./SQL_interface/SQL_operate');
 
 exports.appRouter = function (router) {
     router.get("/app/maptest", function (req, res) {
@@ -36,7 +36,7 @@ exports.appRouter = function (router) {
             css: 'index',
             layout: 'app/all-layout',
             jscript: 'index',
-            title: '21'
+            title: '首页'
         })
     })
 };

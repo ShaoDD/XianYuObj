@@ -28,6 +28,10 @@ var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
 //启动node服务
 var nodemon = require('gulp-nodemon');
+//gulp顺序执行任务
+var gulpSequence = require('gulp-sequence');
+//合并多个stream
+var merge = require('merge-stream');
 
 //node服务与浏览器配置
 gulp.task('server', function () {
@@ -51,12 +55,71 @@ gulp.task('server', function () {
 
 //文件编译
 gulp.task('compile', function () {
-    gulp.src('src/**')
-        .pipe(changed('dist'))
+    var fonts = gulp.src('src/public/fonts/**')
+        .pipe(changed('dist/public/fonts'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
-        .pipe(watch('src/**'))//监听修改文件
-        .pipe(gulp.dest('dist'))//编译完成后输出
-        .pipe(debug({title: '编译:'}))
+        .pipe(gulp.dest('dist/public/fonts'))//编译完成后输出
+        .pipe(debug({title: '静态编译:'}));
+
+    var images = gulp.src('src/public/images/**')
+        .pipe(changed('dist/public/images'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(gulp.dest('dist/public/images'))//编译完成后输出
+        .pipe(debug({title: '静态编译:'}));
+
+    var plugins = gulp.src('src/public/plugins/**')
+        .pipe(changed('dist/public/plugins'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(gulp.dest('dist/public/plugins'))//编译完成后输出
+        .pipe(debug({title: '静态编译:'}));
+
+    return merge(fonts, images, plugins)
 });
 
-gulp.task('default', ['compile', 'server']);
+//js文件编译
+gulp.task('js', function () {
+    gulp.src('src/public/js/*.js')
+        .pipe(changed('dist/public/js'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/public/js'))
+        .pipe(debug({title: 'js编译:'}));
+});
+
+//less文件编译
+gulp.task('less', function () {
+    gulp.src('src/public/stylesheets/*.less')//less文件路径
+        .pipe(changed('dist/public/stylesheets'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(less())//执行编译less
+        .pipe(cssmin())//兼容IE7及以下需设置compatibility属性 .pipe(cssmin({compatibility: 'ie7'}))
+        .pipe(gulp.dest('dist/public/stylesheets'))//编译完成后输出
+        .pipe(debug({title: 'less编译:'}));
+});
+
+//routes文件编译
+gulp.task('routes', function () {
+    gulp.src('src/routes/**')
+        .pipe(changed('dist/routes'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(gulp.dest('dist/routes'))//编译完成后输出
+        .pipe(debug({title: 'routes编译:'}));
+});
+
+//views文件编译
+gulp.task('views', function () {
+    gulp.src('src/views/**')
+        .pipe(changed('dist/views'))
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
+        .pipe(gulp.dest('dist/views'))//编译完成后输出
+        .pipe(debug({title: 'views编译:'}));
+});
+
+gulp.task('watch', function () {
+    gulp.watch(['src/public/fonts/**', 'src/public/images/**', 'src/public/plugins/**'], ['compile', browserSync.reload]);
+    gulp.watch('src/public/js/*.js', ['js', browserSync.reload]);
+    gulp.watch('src/public/stylesheets/*.less', ['less', browserSync.reload]);
+    gulp.watch('src/views/**', ['views', browserSync.reload]);
+});
+
+gulp.task('default', gulpSequence('routes', ['js', 'less', 'views', 'compile'], 'server', 'watch'));
