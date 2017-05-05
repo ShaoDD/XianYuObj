@@ -5,7 +5,7 @@ define([
     "IO"
 ], function ($, FC, mL, IO) {
     $(function () {
-
+        $("#day2").focus();
     });
 
     $(".confirm-btn").click(function () {
@@ -51,4 +51,88 @@ define([
         }
         return days;
     }
+
+    $(document).keydown(function (event) {
+        if (event.keyCode == 13) {
+            if ($("#min2").is(":focus")) {
+                $(".add-btn").click();
+                $("#day2").focus();
+            } else if ($("#hour2").is(":focus")) {
+                $("#min2").focus();
+            } else if ($("#day2").is(":focus")) {
+                $("#hour2").focus();
+            }
+        }
+    });
+
+    $(".add-btn").click(function () {
+        var cust_min = $("#min1").val();
+        var cust_hour = $("#hour1").val();
+        var cust_day = $("#day1").val();
+        var new_min = $("#min2").val();
+        var new_hour = $("#hour2").val();
+        var new_day = $("#day2").val();
+        if (cust_min == "") {
+            cust_min = 0;
+        }
+        if (cust_hour == "") {
+            cust_hour = 0;
+        }
+        if (cust_day == "") {
+            cust_day = 0;
+        }
+        if (new_min == "") {
+            new_min = 0;
+        }
+        if (new_hour == "") {
+            new_hour = 0;
+        }
+        if (new_day == "") {
+            new_day = 0;
+        }
+        cust_min = parseInt(cust_min);
+        cust_hour = parseInt(cust_hour);
+        cust_day = parseInt(cust_day);
+        new_min = parseInt(new_min);
+        new_hour = parseInt(new_hour);
+        new_day = parseInt(new_day);
+        var count_day = cust_day + new_day;
+        var count_hour = cust_hour + new_hour;
+        var count_min = cust_min + new_min;
+        if (count_min >= 60) {
+            count_hour = count_hour + Math.floor(count_min / 60);
+            count_min = count_min - Math.floor(count_min / 60) * 60
+        }
+        if (count_hour >= 8) {
+            count_day = count_day + Math.floor(count_hour / 8);
+            count_hour = count_hour - Math.floor(count_hour / 8) * 8;
+        }
+        $("#min1").val(count_min);
+        $("#hour1").val(count_hour);
+        $("#day1").val(count_day);
+        $("#min2").val('');
+        $("#hour2").val('');
+        $("#day2").val('');
+        $("#min3").val(cust_min);
+        $("#hour3").val(cust_hour);
+        $("#day3").val(cust_day);
+    });
+
+    $(".clear-btn").click(function () {
+        $("#min3").val(parseInt($("#min1").val()));
+        $("#hour3").val(parseInt($("#hour1").val()));
+        $("#day3").val(parseInt($("#day1").val()));
+        $("#min1").val(0);
+        $("#hour1").val(0);
+        $("#day1").val(0);
+        $("#min2").val('');
+        $("#hour2").val('');
+        $("#day2").val('');
+    });
+
+    $(".return-btn").click(function () {
+        $("#min1").val(parseInt($("#min3").val()));
+        $("#hour1").val(parseInt($("#hour3").val()));
+        $("#day1").val(parseInt($("#day3").val()));
+    })
 });
