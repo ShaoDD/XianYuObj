@@ -1,1 +1,73 @@
-<h1>hello world1112312asd3123as23!</h1>
+<div class="body2">
+    <h1>加班日期计算</h1>
+    <div>
+        <input class="day" id="day1" value='0' type="tel" readonly>天
+        <input class="hour" id="hour1" value='0' type="tel" readonly>小时
+        <input class="min" id="min1" value='0' type="tel" readonly>分钟
+    </div>
+    +
+    <div>
+        <input class="day" type="tel" id="day2">天
+        <input class="hour" type="tel" id="hour2">小时
+        <input class="min" type="tel" id="min2">分钟
+    </div>
+
+    <input class="day" id="day3" type="hidden" value="0">
+    <input class="hour" id="hour3" type="hidden" value="0">
+    <input class="min" id="min3" type="hidden" value="0">
+
+    <button style="margin-top: 40px;" class="add-btn">确认相加</button>
+    <button style="margin-top: 40px; margin-left: 80px;" class="clear-btn">清除</button>
+    <button style="margin-top: 40px; margin-left: 80px;" class="return-btn">返回上一步</button>
+</div>
+<div class="body1">
+    <h1>工资计算器</h1>
+    <div class="ul">
+        <ul class="list-group">
+            <li><span>在职天数：</span>
+                <div class="right-li">
+                    <input type="tel" class="day-input">
+                </div>
+            </li>
+            <li><span>是否足月：</span>
+                <div class="right-li">
+                    <div class="radio-box">
+                        <input type="radio" name="month" class="month" value="1" checked>足月
+                        <input type="radio" name="month" class="month" value="2">不足月
+                    </div>
+                </div>
+            </li>
+            <li><span>基本工资：</span>
+                <div class="right-li">
+                    <input type="tel" class="base-input">
+                </div>
+            </li>
+            <li><span>加班时间：</span>
+                <div class="right-li">
+                    <input type="tel" class="add-input add-input-day">天
+                    <input type="tel" class="add-input add-input-day">小时
+                    <input type="tel" class="add-input add-input-day">分
+                </div>
+            </li>
+            <li><span>请假时间：</span>
+                <div class="right-li">
+                    <input type="tel" class="off-input">
+                </div>
+            </li>
+            <li><span>迟到扣款：</span>
+                <div class="right-li">
+                    <input type="tel" class="late-input">
+                </div>
+            </li>
+            <li><span>其他扣款：</span>
+                <div class="right-li">
+                    <input type="tel" class="other-input">
+                </div>
+            </li>
+        </ul>
+        <div class="btn-box">
+            <button class="confirm-btn">计算</button>
+        </div>
+        <p class="salary">工资为:<span class="warning"></span></p>
+    </div>
+</div>

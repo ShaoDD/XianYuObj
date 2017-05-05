@@ -5,7 +5,8 @@ requirejs.config({
         jquery: '/plugins/jquery-3.2.1.min',
         fastClick: '/plugins/fastclick-master/lib/fastclick',
         mobileLayer: '/plugins/layer-v3.0.3/layer/mobile/layer',
-        IO: '/plugins/novem-io'
+        IO: '/plugins/novem-io',
+        flexible: '/plugins/flexible'
     },
 
     "shim": {

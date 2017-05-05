@@ -1,1 +1,1 @@
-define(["jquery"],function(e){});
+define(["jquery","mobileLayer","flexible"],function(e,i,n){e(function(){e(".loading").hide()})});
