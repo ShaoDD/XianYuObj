@@ -1,0 +1,1 @@
+define(["jquery","fastClick","mobileLayer","IO"],function(n,e,t,o){n(document).ready(function(){t.open({content:"移动版和PC版不能同时存在同一页面",btn:"我知道了"})})});
