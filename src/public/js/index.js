@@ -6,6 +6,9 @@ define([
 ], function ($, FC, L, IO) {
     $(function () {
         $("#day2").focus();
+        var date = new Date();
+        var now_month = date.getMonth() + 1;
+        $(".month-select").val(now_month);
     });
 
     $(".month").click(function () {
@@ -103,8 +106,8 @@ define([
         var date = new Date();
         //获取年份
         var year = date.getFullYear();
-        //获取当前月份
-        var mouth = date.getMonth() + 1;
+        //获取月份
+        var mouth = $(".month-select").val();
         //定义当月的天数；
         var days;
         //当月份为二月时，根据闰年还是非闰年判断天数
