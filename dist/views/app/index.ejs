@@ -1,15 +1,15 @@
 <div class="body2">
-    <h1>加班日期计算</h1>
+    <h1>日期计算</h1>
     <div>
-        <input class="day" id="day1" value='0' type="tel" readonly>天
-        <input class="hour" id="hour1" value='0' type="tel" readonly>小时
-        <input class="min" id="min1" value='0' type="tel" readonly>分钟
+        <input class="day" id="day1" value='0' type="number" readonly>天
+        <input class="hour" id="hour1" value='0' type="number" readonly>小时
+        <input class="min" id="min1" value='0' type="number" readonly>分钟
     </div>
     +
     <div>
-        <input class="day" type="tel" id="day2">天
-        <input class="hour" type="tel" id="hour2">小时
-        <input class="min" type="tel" id="min2">分钟
+        <input class="day" type="number" id="day2" >天
+        <input class="hour" type="number" id="hour2">小时
+        <input class="min" type="number" id="min2">分钟
     </div>
 
     <input class="day" id="day3" type="hidden" value="0">
@@ -19,16 +19,13 @@
     <button style="margin-top: 40px;" class="add-btn">确认相加</button>
     <button style="margin-top: 40px; margin-left: 80px;" class="clear-btn">清除</button>
     <button style="margin-top: 40px; margin-left: 80px;" class="return-btn">返回上一步</button>
+    <button style="margin-top: 40px; margin-left: 80px;" class="next-add-btn">填入加班时间</button>
+    <button style="margin-top: 40px; margin-left: 80px;" class="next-off-btn">填入请假时间</button>
 </div>
 <div class="body1">
     <h1>工资计算器</h1>
     <div class="ul">
         <ul class="list-group">
-            <li><span>在职天数：</span>
-                <div class="right-li">
-                    <input type="tel" class="day-input">
-                </div>
-            </li>
             <li><span>是否足月：</span>
                 <div class="right-li">
                     <div class="radio-box">
@@ -37,31 +34,43 @@
                     </div>
                 </div>
             </li>
+            <li class="working-days"><span>在职天数：</span>
+                <div class="right-li">
+                    <input type="number" class="day-input">
+                </div>
+            </li>
             <li><span>基本工资：</span>
                 <div class="right-li">
-                    <input type="tel" class="base-input">
+                    <input type="number" class="base-input">
                 </div>
             </li>
             <li><span>加班时间：</span>
                 <div class="right-li">
-                    <input type="tel" class="add-input add-input-day">天
-                    <input type="tel" class="add-input add-input-day">小时
-                    <input type="tel" class="add-input add-input-day">分
+                    <input type="number" class="add-input add-input-day" value="0">天
+                    <input type="number" class="add-input add-input-hours" value="0">小时
+                    <input type="number" class="add-input add-input-minutes" value="0">分
                 </div>
             </li>
             <li><span>请假时间：</span>
                 <div class="right-li">
-                    <input type="tel" class="off-input">
+                    <input type="number" class="off-input off-input-day" value="0">天
+                    <input type="number" class="off-input off-input-hours" value="0">小时
+                    <input type="number" class="off-input off-input-minutes" value="0">分
                 </div>
             </li>
             <li><span>迟到扣款：</span>
                 <div class="right-li">
-                    <input type="tel" class="late-input">
+                    <input type="number" class="late-input">
                 </div>
             </li>
             <li><span>其他扣款：</span>
                 <div class="right-li">
-                    <input type="tel" class="other-input">
+                    <input type="number" class="other-input">
+                </div>
+            </li>
+            <li><span>其他增加：</span>
+                <div class="right-li">
+                    <input type="number" class="otherAdd-input">
                 </div>
             </li>
         </ul>

@@ -1,30 +1,101 @@
 define([
     "jquery",
     "fastClick",
-    "mobileLayer",
+    "Layer",
     "IO"
-], function ($, FC, mL, IO) {
+], function ($, FC, L, IO) {
     $(function () {
         $("#day2").focus();
     });
 
+    $(".month").click(function () {
+        var monthFlag = $(".month:checked").val();
+        if (monthFlag == '2') {
+            $(".working-days").show();
+        } else {
+            $(".working-days").hide();
+        }
+    });
+
     $(".confirm-btn").click(function () {
-        var day = $(".day-input").val();
         var monthFlag = $(".month:checked").val();
         var base = $(".base-input").val();
-        var add = $(".add-input").val();
-        var off = $(".off-input").val();
-        var late = $(".late-input").val();
-        var other = $(".other-input").val();
-        var days = getDays();
-        if (!day || !base || !add || !off || !late || !other) {
-            mL.open({
-                content: '有信息没有填写',
-                btn: '我知道了'
-            });
+        if (!base) {
+            L.alert('请填写基本工资');
+            return;
         } else {
-            var daySalary = base / days;
+            base = parseInt(base);
         }
+        //加班时间
+        var add = true;
+        $(".add-input").each(function () {
+            if (!$(this).val()) {
+                add = false;
+            }
+        });
+        //请假时间
+        var off = true;
+        $(".off-input").each(function () {
+            if (!$(this).val()) {
+                off = false;
+            }
+        });
+        var late = $(".late-input").val();
+        if (!late) {
+            L.alert('请填写迟到扣款');
+            return;
+        } else {
+            late = parseInt(late);
+        }
+        var other = $(".other-input").val();
+        if (!other) {
+            L.alert('请填写其他扣款');
+            return;
+        } else {
+            other = parseInt(other);
+        }
+        var otherAdd = $(".otherAdd-input").val();
+        if (!otherAdd) {
+            L.alert('请填写其他增加');
+            return;
+        } else {
+            otherAdd = parseInt(otherAdd);
+        }
+        var days = getDays();
+        var daySalary = Math.floor((base / days) * 100) / 100;
+        var hourSalary = Math.floor((daySalary / 8) * 100) / 100;
+        var minuteSalary = Math.floor((hourSalary / 60) * 100) / 100;
+        //计算加班工资
+        if (add) {
+            var add_count =
+                daySalary * parseInt($(".add-input-day").val()) +
+                hourSalary * parseInt($(".add-input-hours").val()) +
+                minuteSalary * parseInt($(".add-input-minutes").val());
+        } else {
+            L.alert('请填写加班时间')
+        }
+        //计算请假工资
+        if (off) {
+            var off_count =
+                daySalary * parseInt($(".off-input-day").val()) +
+                hourSalary * parseInt($(".off-input-hours").val()) +
+                minuteSalary * parseInt($(".off-input-minutes").val());
+        } else {
+            L.alert('请填写请假时间')
+        }
+        var total_count;
+        if (monthFlag == 2) {
+            var day = $(".day-input").val();
+            if (!day) {
+                L.alert('请填写在职天数');
+            } else {
+                day = parseInt(day);
+                total_count = (day * daySalary + add_count + otherAdd - off_count - late - other).toFixed(2);
+            }
+        } else {
+            total_count = (base + add_count + otherAdd - off_count - late - other).toFixed(2);
+        }
+        $(".warning").html(total_count)
     });
 
     function getDays() {
@@ -134,5 +205,17 @@ define([
         $("#min1").val(parseInt($("#min3").val()));
         $("#hour1").val(parseInt($("#hour3").val()));
         $("#day1").val(parseInt($("#day3").val()));
+    });
+
+    $(".next-add-btn").click(function () {
+        $(".add-input-day").val($("#day1").val());
+        $(".add-input-hours").val($("#hour1").val());
+        $(".add-input-minutes").val($("#min1").val());
+    });
+
+    $(".next-off-btn").click(function () {
+        $(".off-input-day").val($("#day1").val());
+        $(".off-input-hours").val($("#hour1").val());
+        $(".off-input-minutes").val($("#min1").val());
     })
 });

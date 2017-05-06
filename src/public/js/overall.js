@@ -3,9 +3,8 @@
  */
 define([
     "jquery",
-    "mobileLayer",
     "flexible"
-], function ($, mL, flex) {
+], function ($, flex) {
     $(function () {
         $(".loading").hide();
     })

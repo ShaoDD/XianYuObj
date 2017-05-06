@@ -9,12 +9,19 @@ h1 {
   margin: 0.5rem 0;
 }
 
-input[type=tel] {
+input[type=number] {
   padding: 0.1rem;
   height: 0.3rem;
   background: @white;
   border: 1px solid @mTextColor;
   margin: 0 0.2rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 button {
@@ -43,13 +50,16 @@ button {
         text-align: left;
         width: 70%;
       }
-      .add-input {
+      .add-input,.off-input {
         width: 10%;
       }
       .radio-box {
         margin: 0 0.2rem;
         float: left;
       }
+    }
+    .working-days {
+      display: none;
     }
   }
 }
@@ -65,4 +75,8 @@ button {
     color: red;
     margin-left: 0.1rem;
   }
+}
+
+.warning-hint {
+  border: 1px solid red !important;
 }
