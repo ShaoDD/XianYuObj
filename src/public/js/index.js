@@ -74,6 +74,7 @@ define([
                 daySalary * parseInt($(".add-input-day").val()) +
                 hourSalary * parseInt($(".add-input-hours").val()) +
                 minuteSalary * parseInt($(".add-input-minutes").val());
+            add_count = Math.floor(add_count);
         } else {
             L.alert('请填写加班时间')
         }
@@ -83,6 +84,7 @@ define([
                 daySalary * parseInt($(".off-input-day").val()) +
                 hourSalary * parseInt($(".off-input-hours").val()) +
                 minuteSalary * parseInt($(".off-input-minutes").val());
+            off_count = Math.floor(off_count);
         } else {
             L.alert('请填写请假时间')
         }
@@ -93,10 +95,10 @@ define([
                 L.alert('请填写在职天数');
             } else {
                 day = parseInt(day);
-                total_count = (day * daySalary + add_count + otherAdd - off_count - late - other).toFixed(2);
+                total_count = Math.floor(base + add_count + otherAdd - off_count - late - other);
             }
         } else {
-            total_count = (base + add_count + otherAdd - off_count - late - other).toFixed(2);
+            total_count = Math.floor(base + add_count + otherAdd - off_count - late - other);
         }
         $(".add-salary").html(add_count);
         $(".off-salary").html(off_count);
