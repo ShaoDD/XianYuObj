@@ -120,6 +120,7 @@ gulp.task('watch', function () {
     gulp.watch('src/public/js/*.js', ['js', browserSync.reload]);
     gulp.watch('src/public/stylesheets/*.less', ['less', browserSync.reload]);
     gulp.watch('src/views/**', ['views', browserSync.reload]);
+    gulp.watch('src/routes/**', ['routes']);
 });
 
 gulp.task('default', gulpSequence('routes', ['js', 'less', 'views', 'compile'], 'server', 'watch'));
