@@ -98,7 +98,9 @@ define([
         } else {
             total_count = (base + add_count + otherAdd - off_count - late - other).toFixed(2);
         }
-        $(".warning").html(total_count)
+        $(".add-salary").html(add_count);
+        $(".off-salary").html(off_count);
+        $(".total-salary").html(total_count);
     });
 
     function getDays() {

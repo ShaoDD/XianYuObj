@@ -31,12 +31,22 @@ exports.appRouter = function (router) {
     // });
 
     //首页
-    router.get("/app/index", function (req,res) {
-        res.render("app/index",{
+    router.get("/app/index", function (req, res) {
+        res.render("app/index", {
             css: 'index',
             layout: 'app/all-layout',
             jscript: 'index',
             title: '首页'
+        })
+    });
+
+    //测试页面
+    router.get("/app/test", function (req, res) {
+        res.render("app/test", {
+            css: 'test',
+            layout: 'app/all-layout',
+            jscript: 'test',
+            title: '测试'
         })
     })
 };

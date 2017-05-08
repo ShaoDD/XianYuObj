@@ -78,7 +78,7 @@ gulp.task('compile', function () {
 
 //js文件编译
 gulp.task('js', function () {
-    gulp.src('src/public/js/*.js')
+    return gulp.src('src/public/js/*.js')
         .pipe(changed('dist/public/js'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(uglify())
@@ -88,7 +88,7 @@ gulp.task('js', function () {
 
 //less文件编译
 gulp.task('less', function () {
-    gulp.src('src/public/stylesheets/*.less')//less文件路径
+    return gulp.src('src/public/stylesheets/*.less')//less文件路径
         .pipe(changed('dist/public/stylesheets'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(less())//执行编译less
@@ -99,7 +99,7 @@ gulp.task('less', function () {
 
 //routes文件编译
 gulp.task('routes', function () {
-    gulp.src('src/routes/**')
+    return gulp.src('src/routes/**')
         .pipe(changed('dist/routes'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/routes'))//编译完成后输出
@@ -108,7 +108,7 @@ gulp.task('routes', function () {
 
 //views文件编译
 gulp.task('views', function () {
-    gulp.src('src/views/**')
+    return gulp.src('src/views/**')
         .pipe(changed('dist/views'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/views'))//编译完成后输出
