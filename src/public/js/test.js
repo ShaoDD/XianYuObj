@@ -5,5 +5,4 @@ define([
     "jquery",
     "Layer"
 ],function ($,L) {
-    L.alert(11111);
 });
