@@ -95,7 +95,7 @@ define([
                 L.alert('请填写在职天数');
             } else {
                 day = parseInt(day);
-                total_count = Math.floor(base + add_count + otherAdd - off_count - late - other);
+                total_count = Math.floor(daySalary*day + add_count + otherAdd - off_count - late - other);
             }
         } else {
             total_count = Math.floor(base + add_count + otherAdd - off_count - late - other);
@@ -139,6 +139,16 @@ define([
                 $("#min2").focus();
             } else if ($("#day2").is(":focus")) {
                 $("#hour2").focus();
+            } else if($(".add-input-day").is(":focus")) {
+                $(".add-input-hours").focus();
+            } else if($(".add-input-hours").is(":focus")) {
+                $(".add-input-minutes").focus();
+            } else if($(".add-input-minutes").is(":focus")) {
+                $(".off-input-day").focus();
+            } else if($(".off-input-day").is(":focus")) {
+                $(".off-input-hours").focus();
+            } else if($(".off-input-hours").is(":focus")) {
+                $(".off-input-minutes").focus();
             }
         }
     });

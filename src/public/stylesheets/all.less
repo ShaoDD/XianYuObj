@@ -1,11 +1,13 @@
 @black: #000000;                            //黑色
 @white: #ffffff;                            //白色
 @backColor: #f0f0f0;                        //背景色
+@mainColor: #10a0ea;                        //主要颜色
+@subColor: #0e90d2;                       //次要颜色
 @mTextColor: lighten(@black, 20%);          //主要文字 #333333
 @sTextColor: lighten(@black, 40%);          //次要文字 #666666
 @aTextColor: lighten(@black, 60%);          //附属文字 #999999
 
-* {
+html,body {
   background: @backColor;
   margin: 0;
   padding: 0;
@@ -34,9 +36,31 @@ html {
 }
 
 .loading {
+  background: @backColor;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: @mainColor;
+  .logo {
+    background-color: @subColor;
+    color: @white;
+    float: left;
+    text-align: center;
+    width: 2rem;
+    padding: 0 0.5rem;
+  }
+  .user-login-box {
+    float: right;
+    padding: 0 0.5rem;
+  }
 }
