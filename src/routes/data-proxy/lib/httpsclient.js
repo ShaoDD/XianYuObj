@@ -1,7 +1,7 @@
 /**
  * Http代理层，以RESTful方式发起请求，并按客户端要求，处理服务器返回的结果
  */
-var http = require('http');
+var https = require('https');
 var httpconf = require('./httpconf');
 //var Result = require('./result');
 var qs = require('querystring');
@@ -42,7 +42,7 @@ exports.handle = function (req, res, opt) {
     var error = opt.error;
     var httpclientError = opt.httpclientError;
     //request defined
-    var request = http.request(options, function (feedback) {
+    var request = https.request(options, function (feedback) {
         if (feedback.statusCode == 200) {
             var body = "";
             feedback.setEncoding('utf8');

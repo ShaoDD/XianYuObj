@@ -7,11 +7,11 @@
 var urls = {};
 
 /*********************API*******************/
-urls["testContent"] = "/Test/testpost";//测试接口
-urls["CNODETEST"] = "/topics";
+urls["cnodeTopics"] = "/topics";//主题首页
+urls["werewolvesGetRoles"] = "/Do/GetRoles";//获取身份信息
 
-function geturl(url) {
+function getUrl(url) {
     return urls[url] ? urls[url] : "";
 }
 
-exports.geturl = geturl;
+exports.getUrl = getUrl;

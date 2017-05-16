@@ -40,15 +40,15 @@ exports.appRouter = function (router) {
         })
     });
 
-    //测试页面
+    //测试页面1
     router.get("/app/test", function (req, res) {
-        Action.send(req, res, 'CNODETEST', {}, "GET", function (res, data) {
+        Action.httpSend(req, res, 'werewolvesGetRoles', {}, "POST", function (res, data) {
             console.log(JSON.parse(data));
             res.render("app/test", {
                 css: 'test',
                 layout: 'app/all-layout',
                 jscript: 'test',
-                title: '测试'
+                title: 'CNODE'
             })
         });
     })

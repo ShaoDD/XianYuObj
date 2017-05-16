@@ -15,20 +15,9 @@ function DataProxy(opt) {
 function getDataHandler(rtype) {
     if (rtype == reqtype.http) {
         return require("./httpclient");
+    }else if(rtype == reqtype.https){
+        return require("./httpsclient");
     }
-
-    if (rtype == reqtype.file) {
-        return require("./fileclient");
-    }
-
-    if (rtype == reqtype.dfs) {
-        return require("./dfsclient");
-    }
-
-    if (rtype == reqtype.mock) {
-        return require("./mockclient");
-    }
-    return require("./httpclient");
 }
 
 DataProxy.prototype.handleRequest = function () {
