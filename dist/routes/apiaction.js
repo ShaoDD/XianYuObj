@@ -2,29 +2,30 @@
  * API Action
  */
 var URL = require("./apiurl");
-var DataProxy   = require("data-proxy");
+var DataProxy = require("./data-proxy");
 
-function send(req, res, url, params, callback) {
+function send(req, res, url, params, method, callback) {
 
     var path = URL.geturl(url);
 
-    if(typeof params == "function") {
+    if (typeof params == "function") {
         callback = params;
     }
 
     new DataProxy({
-        req : req,
-        res : res,
-        reqType : "http",
-        reqOption : {
-            url : path,
-            params : params || {},
-            success : callback || function(res,data){
-                if(!data || data == "undefined" || data == "null")data="{}";
+        req: req,
+        res: res,
+        reqType: "http",
+        reqOption: {
+            url: path,
+            params: params || {},
+            method: method,
+            success: callback || function (res, data) {
+                if (!data || data == "undefined" || data == "null")data = "{}";
                 var json = JSON.parse(data);
-                if(json.data === "" || json.data===null) {
+                if (json.data === "" || json.data === null) {
                     res.status(200).json(json);
-                }else {
+                } else {
                     res.status(200).json(json.data);
                 }
             }
