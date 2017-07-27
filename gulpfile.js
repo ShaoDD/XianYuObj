@@ -49,6 +49,7 @@ gulp.task('server', function () {
             console.log("browser refreshed!")
         });
     }).on('restart', function () {
+        browserSync.reload();
         console.log('restarted!')
     })
 });

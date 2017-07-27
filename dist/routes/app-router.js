@@ -9,14 +9,14 @@ var mysql = require('mysql');
 var sqloperate = require('./SQL_interface/SQL_operate');
 
 exports.appRouter = function (router) {
-    router.get("/app/maptest", function (req, res) {
-        res.render("app/mapTest", {
-            css: 'mapTest',
-            layout: 'app/all-layout',
-            jscript: 'mapTest',
-            title: 'aaaa'
-        })
-    });
+    //router.get("/app/maptest", function (req, res) {
+    //    res.render("app/mapTest", {
+    //        css: 'mapTest',
+    //        layout: 'app/all-layout',
+    //        jscript: 'mapTest',
+    //        title: 'aaaa'
+    //    })
+    //});
 
     // router.get("/app/index", function (req, res) {
     //     // var db = 'dd_financial';
@@ -40,13 +40,16 @@ exports.appRouter = function (router) {
         })
     });
 
-    //测试页面
+    //测试页面1
     router.get("/app/test", function (req, res) {
-        res.render("app/test", {
-            css: 'test',
-            layout: 'app/all-layout',
-            jscript: 'test',
-            title: '测试'
-        })
+        Action.httpSend(req, res, 'werewolvesGetRoles', {}, "POST", function (res, data) {
+            console.log(JSON.parse(data));
+            res.render("app/test", {
+                css: 'test',
+                layout: 'app/all-layout',
+                jscript: 'test',
+                title: 'CNODE'
+            })
+        });
     })
 };
