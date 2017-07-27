@@ -3,8 +3,9 @@
  */
 define([
     "jquery",
-    "flexible"
-], function ($, flex) {
+    "flexible",
+    "bootstrap"
+], function ($, flex, bs) {
     $(function () {
         $(".loading").hide();
     })
