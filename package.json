@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/SDDwww"
+    "start": "node ./bin/XYwww"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
-    "data-proxy": "^0.5.5",
     "gulp": "^3.9.1",
     "gulp-change": "^1.0.0",
     "gulp-changed": "^3.0.0",

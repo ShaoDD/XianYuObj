@@ -7,16 +7,14 @@ requirejs.config({
         mobileLayer: '/plugins/layer-v3.0.3/layer/mobile/layer',
         Layer: '/plugins/layer-v3.0.3/layer/layer',
         IO: '/plugins/novem-io',
-        flexible: '/plugins/flexible',
-        bootstrap: '/plugins/bootstrap/js/bootstrap.min'
+        flexible: '/plugins/flexible'
     },
 
     "shim": {
         "APP": ["jquery"],
         "mobileLayer": ["jquery"],
         "IO": ["jquery"],
-        "fastClick": ["jquery"],
-        "bootstrap": ["jquery"]
+        "fastClick": ["jquery"]
     }
 })
 ;

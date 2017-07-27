@@ -6,9 +6,6 @@ define([
 ], function ($, FC, L, IO) {
     $(function () {
         $("#day2").focus();
-        var date = new Date();
-        var now_month = date.getMonth() + 1;
-        $(".month-select").val(now_month);
     });
 
     $(".month").click(function () {
@@ -74,7 +71,6 @@ define([
                 daySalary * parseInt($(".add-input-day").val()) +
                 hourSalary * parseInt($(".add-input-hours").val()) +
                 minuteSalary * parseInt($(".add-input-minutes").val());
-            add_count = Math.floor(add_count);
         } else {
             L.alert('请填写加班时间')
         }
@@ -84,7 +80,6 @@ define([
                 daySalary * parseInt($(".off-input-day").val()) +
                 hourSalary * parseInt($(".off-input-hours").val()) +
                 minuteSalary * parseInt($(".off-input-minutes").val());
-            off_count = Math.floor(off_count);
         } else {
             L.alert('请填写请假时间')
         }
@@ -95,14 +90,12 @@ define([
                 L.alert('请填写在职天数');
             } else {
                 day = parseInt(day);
-                total_count = Math.floor(daySalary*day + add_count + otherAdd - off_count - late - other);
+                total_count = (day * daySalary + add_count + otherAdd - off_count - late - other).toFixed(2);
             }
         } else {
-            total_count = Math.floor(base + add_count + otherAdd - off_count - late - other);
+            total_count = (base + add_count + otherAdd - off_count - late - other).toFixed(2);
         }
-        $(".add-salary").html(add_count);
-        $(".off-salary").html(off_count);
-        $(".total-salary").html(total_count);
+        $(".warning").html(total_count)
     });
 
     function getDays() {
@@ -110,8 +103,8 @@ define([
         var date = new Date();
         //获取年份
         var year = date.getFullYear();
-        //获取月份
-        var mouth = $(".month-select").val();
+        //获取当前月份
+        var mouth = date.getMonth() + 1;
         //定义当月的天数；
         var days;
         //当月份为二月时，根据闰年还是非闰年判断天数
@@ -139,16 +132,6 @@ define([
                 $("#min2").focus();
             } else if ($("#day2").is(":focus")) {
                 $("#hour2").focus();
-            } else if($(".add-input-day").is(":focus")) {
-                $(".add-input-hours").focus();
-            } else if($(".add-input-hours").is(":focus")) {
-                $(".add-input-minutes").focus();
-            } else if($(".add-input-minutes").is(":focus")) {
-                $(".off-input-day").focus();
-            } else if($(".off-input-day").is(":focus")) {
-                $(".off-input-hours").focus();
-            } else if($(".off-input-hours").is(":focus")) {
-                $(".off-input-minutes").focus();
             }
         }
     });

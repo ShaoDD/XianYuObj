@@ -26,26 +26,6 @@
     <h1>工资计算器</h1>
     <div class="ul">
         <ul class="list-group">
-            <li><span>月份：</span>
-                <div class="right-li">
-                    <div class="radio-box">
-                        <select class="month-select">
-                            <option value="1">1月</option>
-                            <option value="2">2月</option>
-                            <option value="3">3月</option>
-                            <option value="4">4月</option>
-                            <option value="5">5月</option>
-                            <option value="6">6月</option>
-                            <option value="7">7月</option>
-                            <option value="8">8月</option>
-                            <option value="9">9月</option>
-                            <option value="10">10月</option>
-                            <option value="11">11月</option>
-                            <option value="12">12月</option>
-                        </select>
-                    </div>
-                </div>
-            </li>
             <li><span>是否足月：</span>
                 <div class="right-li">
                     <div class="radio-box">
@@ -80,25 +60,23 @@
             </li>
             <li><span>迟到扣款：</span>
                 <div class="right-li">
-                    <input type="number" class="late-input" value="0">
+                    <input type="number" class="late-input">
                 </div>
             </li>
             <li><span>其他扣款：</span>
                 <div class="right-li">
-                    <input type="number" class="other-input" value="0">
+                    <input type="number" class="other-input">
                 </div>
             </li>
             <li><span>其他增加：</span>
                 <div class="right-li">
-                    <input type="number" class="otherAdd-input" value="0">
+                    <input type="number" class="otherAdd-input">
                 </div>
             </li>
         </ul>
         <div class="btn-box">
             <button class="confirm-btn">计算</button>
         </div>
-        <p class="salary">加班工资为:<span class="add-salary warning"></span></p>
-        <p class="salary">请假工资为:<span class="off-salary warning"></span></p>
-        <p class="salary">工资为:<span class="total-salary warning"></span></p>
+        <p class="salary">工资为:<span class="warning"></span></p>
     </div>
 </div>

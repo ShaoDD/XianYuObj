@@ -4,14 +4,13 @@
 /**
  * API URL
  */
-var urls = {};
+var urls = {} ;
 
 /*********************API*******************/
-urls["cnodeTopics"] = "/topics";//主题首页
-urls["werewolvesGetRoles"] = "/Do/GetRoles";//获取身份信息
+urls["testContent"] = "/Test/testpost" ;//测试接口
 
-function getUrl(url) {
+function geturl(url) {
     return urls[url] ? urls[url] : "";
 }
 
-exports.getUrl = getUrl;
+exports.geturl = geturl;
