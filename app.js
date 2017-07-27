@@ -3,19 +3,19 @@
  *
  * @type {exports|*}
  */
-const express = require('express');
-const partials = require('express-partials');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const debug = require('debug')('dmp-webapp');
-const fs = require('fs');
-const routes = require('./dist/routes/router');
-const filter = require('./filter');
+var express = require('express');
+var partials = require('express-partials');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var debug = require('debug')('dmp-webapp');
+var fs = require('fs');
+var routes = require('./dist/routes/router');
+var filter = require('./filter');
 
-const app = express();
+var app = express();
 //端口号
 app.set('port', process.env.PORT || 9001);
 //设置视图路径
