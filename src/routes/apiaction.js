@@ -2,7 +2,7 @@
  * API Action
  */
 var URL = require("./apiurl");
-var DataProxy   = require("data-proxy");
+var DataProxy   = require("./data-proxy");
 
 function send(req, res, url, params, callback) {
 

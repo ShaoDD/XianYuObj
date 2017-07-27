@@ -45,6 +45,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^2.1.2",
     "gulp-watch": "^4.3.11",
+    "md5": "^2.2.1",
     "merge-stream": "^1.0.1"
   }
 }

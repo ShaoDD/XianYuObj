@@ -2,7 +2,7 @@
  * Created by WinterKiSS on 2016/9/10.
  */
 var Action = require("./apiaction");
-var DataProxy = require("data-proxy");
+var DataProxy = require("./data-proxy");
 
 var mysql = require('mysql');
 //配置模块

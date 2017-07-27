@@ -2,36 +2,36 @@
  * gulp入口文件
  * Created by Administrator on 2017/4/27.
  */
-const gulp = require('gulp');
+var gulp = require('gulp');
 //less文件编译
-const less = require('gulp-less');
+var less = require('gulp-less');
 //ejs编译
-const ejs = require('gulp-ejs');
+var ejs = require('gulp-ejs');
 //css文件压缩
-const cssmin = require('gulp-minify-css');
+var cssmin = require('gulp-minify-css');
 //获取 uglify 模块（用于压缩 JS）
-const uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 //监听
-const watch = require('gulp-watch');
+var watch = require('gulp-watch');
 //异常警报
-const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
+var plumber = require('gulp-plumber');
 //debug
-const debug = require('gulp-debug');
+var debug = require('gulp-debug');
 //文件更改编译
-const changed = require('gulp-changed');
+var changed = require('gulp-changed');
 //本地Web服务器
-const connect = require('gulp-connect');
+var connect = require('gulp-connect');
 //重命名
-const rename = require('gulp-rename');
+var rename = require('gulp-rename');
 //静态服务器
-const browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync').create();
 //启动node服务
-const nodemon = require('gulp-nodemon');
+var nodemon = require('gulp-nodemon');
 //gulp顺序执行任务
-const gulpSequence = require('gulp-sequence');
+var gulpSequence = require('gulp-sequence');
 //合并多个stream
-const merge = require('merge-stream');
+var merge = require('merge-stream');
 
 //node服务与浏览器配置
 gulp.task('server', function () {
@@ -56,19 +56,19 @@ gulp.task('server', function () {
 
 //文件编译
 gulp.task('compile', function () {
-    let fonts = gulp.src('src/public/fonts/**')
+    var fonts = gulp.src('src/public/fonts/**')
         .pipe(changed('dist/public/fonts'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/public/fonts'))//编译完成后输出
         .pipe(debug({title: '静态编译:'}));
 
-    let images = gulp.src('src/public/images/**')
+    var images = gulp.src('src/public/images/**')
         .pipe(changed('dist/public/images'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/public/images'))//编译完成后输出
         .pipe(debug({title: '静态编译:'}));
 
-    let plugins = gulp.src('src/public/plugins/**')
+    var plugins = gulp.src('src/public/plugins/**')
         .pipe(changed('dist/public/plugins'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/public/plugins'))//编译完成后输出
