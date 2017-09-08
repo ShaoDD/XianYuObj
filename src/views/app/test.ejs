@@ -1,0 +1,58 @@
+<% include ../layout/topBar.ejs %>
+
+<div class="html-body">
+    <div class="col-sm-8 center-block">
+        <ul class="list-group">
+            <% for(var i = 0 ; i < data.length; i++){ %>
+            <li class="list-group-item">
+                <a href="#">
+                    <div class="user-logo left-float">
+                        <img src="<%= data[i].author.avatar_url %>">
+                    </div>
+                </a>
+                <div class="reply-count-box left-float">
+                    <span class="reply_count"><%= data[i].reply_count %></span>
+                    <span class="count_seperator">/</span>
+                    <span class="visit_count"><%= data[i].visit_count %></span>
+                </div>
+                <div class="topic-title left-float">
+                    <% if(data[i].top){ %>
+                    <span class="topiclist-tab put_top">置顶</span>
+                    <% }else if(data[i].good){ %>
+                    <span class="topiclist-tab put_top">精华</span>
+                    <% }else if(data[i].tab){ %>
+                    <span class="topiclist-tab">
+                        <% if(data[i].tab == 'ask'){ %>
+                        问答
+                        <% }else if(data[i].tab == 'share'){ %>
+                        分享
+                        <% }else if(data[i].tab == 'job'){ %>
+                        招聘
+                        <% }else if(data[i].tab == 'good'){ %>
+                        精华
+                        <% } %>
+                    </span>
+                    <% } %>
+                    <a href="#"><%= data[i].title %></a>
+                </div>
+                <div class="last-active right-float">
+                    <span class="last-time">
+                        <% if(data[i].last_time == 0){ %>
+                        几秒前
+                        <% }else{ %>
+                        <%= data[i].last_time %>
+                        <% if(data[i].last_type == 1){ %>
+                        小时前
+                        <% }else if(data[i].last_type == 2){ %>
+                        分钟前
+                        <% }else if(data[i].last_type == 3){ %>
+                        天前
+                        <% } %>
+                        <% } %>
+                    </span>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
