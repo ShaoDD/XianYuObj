@@ -32,11 +32,16 @@ var nodemon = require('gulp-nodemon');
 var gulpSequence = require('gulp-sequence');
 //合并多个stream
 var merge = require('merge-stream');
+//路径
+var path = require('path');
+//文件管理
+var fileSystem = require('fs');
+
 
 //node服务与浏览器配置
 gulp.task('server', function () {
     nodemon({
-        script: './bin/www',
+        script: './bin/SDDwww',
         // 忽略部分对程序运行无影响的文件的改动，nodemon只监视js文件，可用ext项来扩展别的文件类型
         ignore: ["gulpfile.js", "node_modules/", "dist/public", "dist/views", "src/"],
         env: {'NODE_ENV': 'development'}
@@ -49,6 +54,7 @@ gulp.task('server', function () {
             console.log("browser refreshed!")
         });
     }).on('restart', function () {
+        browserSync.reload();
         console.log('restarted!')
     })
 });
@@ -78,7 +84,7 @@ gulp.task('compile', function () {
 
 //js文件编译
 gulp.task('js', function () {
-    gulp.src('src/public/js/*.js')
+    return gulp.src('src/public/js/*.js')
         .pipe(changed('dist/public/js'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(uglify())
@@ -88,7 +94,7 @@ gulp.task('js', function () {
 
 //less文件编译
 gulp.task('less', function () {
-    gulp.src('src/public/stylesheets/*.less')//less文件路径
+    return gulp.src('src/public/stylesheets/*.less')//less文件路径
         .pipe(changed('dist/public/stylesheets'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(less())//执行编译less
@@ -99,7 +105,7 @@ gulp.task('less', function () {
 
 //routes文件编译
 gulp.task('routes', function () {
-    gulp.src('src/routes/**')
+    return gulp.src('src/routes/**')
         .pipe(changed('dist/routes'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/routes'))//编译完成后输出
@@ -108,7 +114,7 @@ gulp.task('routes', function () {
 
 //views文件编译
 gulp.task('views', function () {
-    gulp.src('src/views/**')
+    return gulp.src('src/views/**')
         .pipe(changed('dist/views'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(gulp.dest('dist/views'))//编译完成后输出
@@ -120,6 +126,22 @@ gulp.task('watch', function () {
     gulp.watch('src/public/js/*.js', ['js', browserSync.reload]);
     gulp.watch('src/public/stylesheets/*.less', ['less', browserSync.reload]);
     gulp.watch('src/views/**', ['views', browserSync.reload]);
+    gulp.watch('src/routes/**', ['routes']);
 });
 
-gulp.task('default', gulpSequence('routes', ['js', 'less', 'views', 'compile'], 'server', 'watch'));
+gulp.task('fileChange', function () {
+    watch('src/**')
+        .on('add', function(file){
+            console.log('添加了 ' + file);
+        })
+        .on('change', function(file){
+            console.log('修改了 ' + file);
+        })
+        .on('unlink', function(file){
+            //删除文件
+            var distFile = './dist/' + path.relative('./src', file); //计算相对路径
+            fileSystem.existsSync(distFile) && fileSystem.unlink(distFile);
+        });
+});
+
+gulp.task('default', gulpSequence('routes', ['js', 'less', 'views', 'compile'], 'server', 'watch', 'fileChange'));

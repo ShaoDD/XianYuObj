@@ -7,9 +7,5 @@ var md5             = require('md5');
 var sqloperate      = require('./SQL_interface/SQL_operate');
 
 exports.appAPI = function(router){
-    router.get("/api/sql/test",function(req,res){
-        var db = 'detail_list';
-        var con = '';
-        sqloperate.selectSQL(db,con,res);
-    })
+
 };

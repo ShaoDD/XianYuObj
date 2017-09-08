@@ -9,34 +9,13 @@ var mysql = require('mysql');
 var sqloperate = require('./SQL_interface/SQL_operate');
 
 exports.appRouter = function (router) {
-    router.get("/app/maptest", function (req, res) {
-        res.render("app/mapTest", {
-            css: 'mapTest',
-            layout: 'app/all-layout',
-            jscript: 'mapTest',
-            title: 'aaaa'
-        })
-    });
-
-    // router.get("/app/index", function (req, res) {
-    //     // var db = 'dd_financial';
-    //     // var con = '';
-    //     // sqloperate.selectSQL(db,con,res);
-    //     res.render("app/index", {
-    //         css: 'index',
-    //         layout: 'app/all-layout',
-    //         jscript: 'index',
-    //         title: '首页'
-    //     })
-    // });
-
     //首页
     router.get("/app/index", function (req,res) {
         res.render("app/index",{
             css: 'index',
             layout: 'app/all-layout',
             jscript: 'index',
-            title: '首页'
+            title: '首页首页'
         })
     })
 };

@@ -1,1 +1,0 @@
-requirejs(["/js/overall.js"]),jscript&&requirejs([jscript]);

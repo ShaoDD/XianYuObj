@@ -1,1 +1,0 @@
-define(["jquery","flexible"],function(e,i){e(function(){e(".loading").hide()})});
