@@ -1,6 +1,5 @@
 /**
  * 客户端请求类型，定义后台取数据方式
- * Created by ben on 14-11-9.
  */
 
 var reqtype = {

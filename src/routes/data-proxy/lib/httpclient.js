@@ -31,7 +31,6 @@ function handleInDevmode(req, res, opt) {
     }
 }
 
-
 /**
  * 设置相对路径，参数和http方法，从数据服务层取数据,并直接发送到客户端
  * @param req
