@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/6/27.
  */
-var httpconf = {
+var httpsconf = {
     // host: '123.59.77.142',
     // host:'192.168.1.122',
     host: 'cnodejs.org',
@@ -10,4 +10,4 @@ var httpconf = {
     devmode: false
 };
 
-module.exports = httpconf;
+module.exports = httpsconf;

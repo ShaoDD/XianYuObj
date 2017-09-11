@@ -1,82 +1,13 @@
 @import "all";
 
-body {
-  text-align: center;
-}
-
-h1 {
-  font-size: 24px;
-  margin: 0.5rem 0;
-}
-
-input[type=number] {
-  padding: 0.1rem;
-  height: 0.3rem;
-  background: @white;
-  border: 1px solid @mTextColor;
-  margin: 0 0.2rem;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-button {
-  color: white;
-  font-size: 16px;
-  padding: 0.2rem 0.4rem;
-  background-color: #2aabd2;
-  border-radius: 5px;
-  border: 0;
-}
-
-.ul {
-  width: 40%;
-  margin: auto;
-  ul {
-    overflow: hidden;
-    li {
-      width: 100%;
-      span {
-        float: left;
-        margin-right: 10%;
-        width: 20%;
-      }
-      .right-li {
-        float: left;
-        text-align: left;
-        width: 70%;
-      }
-      .add-input,.off-input {
-        width: 10%;
-      }
-      .radio-box {
-        margin: 0 0.2rem;
-        float: left;
-      }
-    }
-    .working-days {
-      display: none;
-    }
+.header {
+  width: 100%;
+  .option-tab {
+    height: 60px;
+    background-color: red;
   }
-}
-
-.btn-box {
-  padding: 0.2rem 0;
-}
-
-.salary {
-  margin-top: 0.2rem;
-  font-size: 16px;
-  .warning {
-    color: red;
-    margin-left: 0.1rem;
+  .banner {
+    height: 200px;
+    background-color: mediumvioletred;
   }
-}
-
-.warning-hint {
-  border: 1px solid red !important;
 }
