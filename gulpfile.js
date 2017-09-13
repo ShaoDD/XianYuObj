@@ -84,7 +84,7 @@ gulp.task('compile', function () {
 
 //js文件编译
 gulp.task('js', function () {
-    return gulp.src('src/public/js/*.js')
+    return gulp.src(['src/public/js/*.js', 'src/public/js/**/*.js'])
         .pipe(changed('dist/public/js'))
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))//异常警报
         .pipe(uglify())

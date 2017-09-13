@@ -5,7 +5,5 @@ define([
     "jquery",
     "flexible"
 ], function ($, flex) {
-    $(function () {
-        $(".loading").hide();
-    })
+
 });

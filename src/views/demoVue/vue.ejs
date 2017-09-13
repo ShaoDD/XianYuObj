@@ -1,0 +1,57 @@
+<div class="">
+    <h2>VUE.JS DEMO！</h2>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo1（基础渲染）:</span>
+    <div class="demo" id="demo1">
+        {{message}}
+    </div>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo2（v-bind绑定信息）:</span>
+    <div class="demo" id="demo2" v-bind:title="message">
+        鼠标悬停查看绑定参数
+    </div>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo3（v-if条件判断+v-on事件监听）:</span>
+    <div class="demo" id="demo3">
+        <p>flag: {{flag}}</p>
+        <p v-if="flag">
+            判断语句为真，显示
+        </p>
+        <button v-on:click="changeFlag">更改flag</button>
+    </div>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo4（v-for条件循环+v-on事件监听）:</span>
+    <div class="demo" id="demo4">
+        <p v-for="data in list">
+            {{data.data}}
+        </p>
+        <button v-on:click="addList">新增一行</button>
+    </div>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo5（v-model数据双向绑定）:</span>
+    <div class="demo" id="demo5">
+        <p>{{data}}</p>
+        <input v-model="data">
+    </div>
+</div>
+
+<div class="demo-body">
+    <span class="demo-title">demo6（组件模板构建）:</span>
+    <div class="demo" id="demo6">
+        <demo-list
+                v-for="item in list"
+                v-bind:item="item"
+                v-bind:key="item.id">
+        </demo-list>
+    </div>
+</div>

@@ -7,7 +7,8 @@ requirejs.config({
         mobileLayer: '/plugins/layer-v3.0.3/layer/mobile/layer',
         Layer: '/plugins/layer-v3.0.3/layer/layer',
         IO: '/plugins/novem-io',
-        flexible: '/plugins/flexible'
+        flexible: '/plugins/flexible',
+        VUE: '/plugins/vue'
     },
 
     "shim": {
@@ -18,4 +19,4 @@ requirejs.config({
     }
 })
 ;
-requirejs(["app"]);
+requirejs(["app/app"]);
